@@ -1,0 +1,48 @@
+<%- include('template/cabecera', {tituloWeb: 'Editar producto' }) %>
+
+    <div class="container">
+        <h2>Editar Pod</h2>
+        <% if (error) { %>
+            <%= mensaje %>
+            <a href="/" class="btn btn-dark btn-block my-2"> Volver</a>
+        <% } %>
+        <% if (!error) { %>
+            <form id="editar" data-id="<%= pod._id %>">
+                <label for="id">ID</label>
+                <input type="number" value="<%= pod.id %>" class="form-control my-2" name="id" id="idInput">
+                <label for="marca">Marca</label>
+                <input type="text" value="<%= pod.marca %>" class="form-control my-2" name="marca" id="marcaInput">
+                <label for="precio">precio</label>
+                <input type="text" value="<%= pod.precio %>" class="form-control my-2" name="precio" id="precioInput">
+                <label for="sabor">Sabor</label>
+                <input type="text" value="<%= pod.sabor %>" class="form-control my-2" name="sabor" id="saborInput">
+                <button class="btn btn-primary btn-sm" type="submit">Actualizar</button>
+            </form>
+        <% } %>
+    </div>
+    <script>
+        const formEditar = document.querySelector('#editar');
+        formEditar.addEventListener('submit', async (e) => {
+            e.preventDefault()
+            const id = formEditar.elements['id'].value
+            const marca = formEditar.elements['marca'].value
+            const precio = formEditar.elements['precio'].value
+            const sabor = formEditar.elements['sabor'].value
+            const _id = formEditar.dataset.id
+            const data = await fetch(`/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({id, marca, precio, sabor})
+            })
+            const res = await data.json()
+            if (res.estado) {
+                window.location.href = '/'
+            } else {
+                console.log(res)
+            }
+        })
+    </script>
+
+<%- include('template/footer') %>

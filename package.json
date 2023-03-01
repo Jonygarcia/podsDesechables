@@ -1,0 +1,29 @@
+{
+  "name": "podsdesechables",
+  "version": "1.0.0",
+  "description": "Operaciones CRUD realizadas con Express por Jonatan García Barrera",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jonygarcia/podsDesechables.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jonygarcia/podsDesechables/issues"
+  },
+  "homepage": "https://github.com/Jonygarcia/podsDesechables#readme",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.0.3",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.0"
+  }
+}
